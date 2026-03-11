@@ -173,7 +173,7 @@ This repository is a **public showcase**. The full source code is available on r
 
 **Meriem Ayari** — Infrastructure & Cloud Automation Engineer
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://linkedin.com/in/meriemayari)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://tn.linkedin.com/in/meriem-ayari-2667a256)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/MeriemAyari)
 
 ---
