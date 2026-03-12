@@ -31,7 +31,7 @@ From Active Directory to Kubernetes, from CI/CD pipelines to security hardening,
 | ☁️ Azure Infrastructure | Terraform | ✅ Production Ready |
 | 🏛️ Active Directory | PowerShell | ✅ Production Ready |
 | 🖥️ Hyper-V + VDI | PowerShell + Terraform | ✅ Production Ready |
-| 🌐 IIS + SQL Server | PowerShell | 🔄 In Progress |
+| 🌐 IIS + SQL Server | PowerShell | ✅ Production Ready |
 | 🐧 Linux + Kubernetes | Terraform + k3s | 📋 Planned |
 | ⚙️ CI/CD Jenkins | Docker | 📋 Planned |
 | 🔒 CIS Hardening | Ansible | 📋 Planned |
@@ -91,8 +91,11 @@ Full AD structure deployed via PowerShell in a single script:
 - Remote Desktop Services
 - VDI workstations automatically joined to domain
 
-### 📋 Phase 4 — Windows Applications
-IIS, SQL Server, Windows Containers
+### ✅ Phase 4 — Windows Applications
+- VM-IIS : IIS + ASP.NET 4.5 (Windows Server 2022)
+- VM-SQL : SQL Server 2022 RTM (16.0.1000.6)
+- VM-Docker : Docker CE 27.5.1 + Windows Containers
+- NAT network 192.168.100.0/24 via WinNAT
 
 ### 📋 Phase 5 — Linux + Kubernetes
 Ubuntu VM, k3s cluster, Docker
@@ -159,7 +162,7 @@ This repository is a **public showcase**. The full source code is available on r
 - [x] Phase 1 — Azure Infrastructure
 - [x] Phase 2 — Active Directory
 - [x] Phase 3 — Hyper-V + VDI
-- [ ] Phase 4 — Windows Applications (IIS, SQL)
+- [x] Phase 4 — Windows Applications (IIS, SQL, Docker)
 - [ ] Phase 5 — Linux + Kubernetes
 - [ ] Phase 6 — Jenkins CI/CD
 - [ ] Phase 7 — Ansible Hardening
