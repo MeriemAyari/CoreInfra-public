@@ -59,7 +59,11 @@ Azure Cloud
 ├── 🖥️ Hyper-V Host
 │   ├── Hyper-V Role
 │   ├── Remote Desktop Services
-│   └── Domain joined
+│   ├── Domain joined
+│   └── 🖧 NAT Network (192.168.100.0/24)
+│       ├── VM-IIS    → IIS + ASP.NET 4.5
+│       ├── VM-SQL    → SQL Server 2022
+│       └── VM-Docker → Docker CE 27.5.1
 │
 └── 💻 VDI Workstations
     ├── Workstation 01 (Windows 10 Enterprise)
