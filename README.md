@@ -31,8 +31,8 @@ From Active Directory to Kubernetes, from CI/CD pipelines to security hardening,
 | ☁️ Azure Infrastructure | Terraform | ✅ Production Ready |
 | 🏛️ Active Directory | PowerShell | ✅ Production Ready |
 | 🖥️ Hyper-V + VDI | PowerShell + Terraform | ✅ Production Ready |
-| 🌐 IIS + SQL Server | PowerShell | ✅ Production Ready |
-| 🐧 Linux + Kubernetes | Terraform + k3s | 📋 Planned |
+| 🌐 IIS + SQL Server + Docker | PowerShell Direct | ✅ Production Ready |
+| 🐧 Linux + Kubernetes | Ansible + k3s | ✅ Production Ready |
 | ⚙️ CI/CD Jenkins | Docker | 📋 Planned |
 | 🔒 CIS Hardening | Ansible | 📋 Planned |
 | 📊 Monitoring | Prometheus + Grafana | 📋 Planned |
@@ -61,9 +61,10 @@ Azure Cloud
 │   ├── Remote Desktop Services
 │   ├── Domain joined
 │   └── 🖧 NAT Network (192.168.100.0/24)
-│       ├── VM-IIS    → IIS + ASP.NET 4.5
-│       ├── VM-SQL    → SQL Server 2022
-│       └── VM-Docker → Docker CE 27.5.1
+│       ├── VM-IIS     → IIS + ASP.NET 4.5
+│       ├── VM-SQL     → SQL Server 2022
+│       ├── VM-Docker  → Docker CE 27.5.1
+│       └── vm-linux01 → Ubuntu 22.04 + k3s
 │
 └── 💻 VDI Workstations
     ├── Workstation 01 (Windows 10 Enterprise)
@@ -101,8 +102,12 @@ Full AD structure deployed via PowerShell in a single script:
 - VM-Docker : Docker CE 27.5.1 + Windows Containers
 - NAT network 192.168.100.0/24 via WinNAT
 
-### 📋 Phase 5 — Linux + Kubernetes
-Ubuntu VM, k3s cluster, Docker
+### ✅ Phase 5 — Linux + Kubernetes
+- vm-linux01 : Ubuntu 22.04 LTS (guest Hyper-V — 192.168.100.20)
+- k3s v1.34.5 — control-plane Ready
+- Ansible 2.10 — control node
+- SSH key authentication — no passwords
+- Deployed via Ansible playbook (idempotent)
 
 ### 📋 Phase 6 — CI/CD
 Jenkins pipeline in containers
@@ -122,7 +127,7 @@ Microsoft Defender, SIEM, LAPS password rotation
 
 ```
 Infrastructure  │ Terraform 1.5+, Azure RM Provider
-Automation      │ PowerShell 5.1+, Ansible 2.15+
+Automation      │ PowerShell 5.1+, Ansible 2.10+
 Containers      │ Docker, k3s (Kubernetes)
 CI/CD           │ Jenkins
 Monitoring      │ Prometheus, Grafana
@@ -140,11 +145,10 @@ After full deployment, CoreInfra delivers:
 ✅ Domain Controller     → Active Directory + DNS + DHCP
 ✅ Hyper-V Host          → Virtualization platform + RDS
 ✅ VDI Workstations      → Domain-joined Windows 10/11
+✅ Application Servers   → IIS + SQL Server 2022 + Docker CE
+✅ Linux + Kubernetes    → Ubuntu 22.04 + k3s cluster
 ✅ Security Policies     → PSO, lockout, password complexity
-✅ Network Segmentation  → Subnets, NSGs, routing
-✅ Monitoring            → Dashboards + alerting
-✅ CI/CD Pipeline        → Automated deployments
-✅ CIS Hardening         → Security compliance
+✅ Network Segmentation  → Subnets, NSGs, WinNAT routing
 ```
 
 ---
@@ -167,7 +171,7 @@ This repository is a **public showcase**. The full source code is available on r
 - [x] Phase 2 — Active Directory
 - [x] Phase 3 — Hyper-V + VDI
 - [x] Phase 4 — Windows Applications (IIS, SQL, Docker)
-- [ ] Phase 5 — Linux + Kubernetes
+- [x] Phase 5 — Linux + Kubernetes (Ubuntu 22.04 + k3s)
 - [ ] Phase 6 — Jenkins CI/CD
 - [ ] Phase 7 — Ansible Hardening
 - [ ] Phase 8 — Prometheus + Grafana
